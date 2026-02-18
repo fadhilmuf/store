@@ -1,10 +1,67 @@
-    /* ----------------------------------------------------------
-    :: Template Name: Studio - Creative Photography Template
-    :: Author: Colorlib
-    :: Author URL: https://colorlib.com
-    :: Version: 1.0.0
-    :: Created: 31 January 2018
-    :: Last Updated: 31 January 2018
-    ---------------------------------------------------------- */
+/* Container Utama */
+.uniqlo-style-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Ini yang membuat efek 'snap' saat scroll */
+    scroll-behavior: smooth;
+}
 
-    /* ============ PLACE YOUR CUSTOM CSS HERE ============ */
+/* Setiap Slide Gambar */
+.uniqlo-slide {
+    width: 100%;
+    height: 100vh; /* Memastikan satu gambar memenuhi satu layar penuh */
+    scroll-snap-align: start; /* Titik pemberhentian scroll */
+    position: relative;
+    overflow: hidden;
+}
+
+.uniqlo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tidak gepeng dan memenuhi layar */
+}
+
+/* Penataan Teks agar mirip Uniqlo */
+.uniqlo-text {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: #fff;
+    border-left: 4px solid #fff;
+    padding-left: 20px;
+    background: transparent
+
+.uniqlo-text h2 {
+    color: #fff;
+    font-size: 48px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Penyesuaian Menu Desktop di Layar HP */
+@media only screen and (max-width: 767px) {
+    /* Mengatur container header agar muat */
+    .header-area {
+        padding: 0 10px; /* Kurangi padding kiri-kanan container utama */
+    }
+
+    /* Memaksa menu berjejer ke samping (horizontal) */
+    .navbar-nav {
+        flex-direction: row !important;
+        gap: 10px; /* Jarak antar menu */
+    }
+
+    /* Mengecilkan teks & padding link agar muat bersanding dengan logo */
+    .header-area .main-menu .nav-link {
+        padding: 0 5px !important; /* Jarak antar teks dipersempit */
+        font-size: 12px; /* Ukuran font sedikit diperkecil */
+        text-transform: uppercase;
+    }
+
+    /* Opsional: Kecilkan logo jika perlu */
+    .navbar-brand img {
+        max-width: 80px; /* Sesuaikan ukuran logo agar tidak makan tempat */
+    }
+
+    
+}
