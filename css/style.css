@@ -72,5 +72,13 @@
         box-shadow: none !important;
     }
 }
+
+/* Pastikan video memenuhi layar seperti gambar */
+.uniqlo-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar video tidak gepeng */
+    display: block;
+}
     
 }
