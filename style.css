@@ -29,7 +29,8 @@
     color: #fff;
     border-left: 4px solid #fff;
     padding-left: 20px;
-    background: transparent
+    background: transparent; /* Sebelumnya: rgba(0, 0, 0, 0.2) */
+}
 
 .uniqlo-text h2 {
     color: #fff;
@@ -63,5 +64,13 @@
         max-width: 80px; /* Sesuaikan ukuran logo agar tidak makan tempat */
     }
 
+/* Menghilangkan kotak hitam menu di HP */
+@media only screen and (max-width: 767px) {
+    #studioMenu {
+        background-color: transparent !important; /* Hapus warna hitam */
+        padding: 0 !important; /* Hapus jarak tambahan yang tidak perlu */
+        box-shadow: none !important;
+    }
+}
     
 }
