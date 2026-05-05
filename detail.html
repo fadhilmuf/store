@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimono - Sashiko</title>
+    
+        <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/letter-s.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="detail-page">
+
+    <header class="header-custom">
+        <div class="header-left">
+            <i class="fas fa-bars menu-icon"></i>
+        </div>
+        <div class="header-center">
+            <a href="index.html" class="logo-text">SASHIKO</a>
+        </div>
+        <div class="header-right">
+            <div class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-container">
+            <div class="product-gallery">
+                <div class="main-media-container">
+                    <video class="gallery-media active" data-index="0" autoplay loop muted playsinline>
+                        <source src="img/bg-img/Disp-Kimono.mp4" type="video/mp4">
+                    </video>
+                    <img class="gallery-media" data-index="1" src="img/bg-img/k1.jpeg" alt="Detail 1">
+                    <img class="gallery-media" data-index="2" src="img/bg-img/k2.jpeg" alt="Detail 2">
+                </div>
+
+                <div class="thumbnail-grid">
+                    <div class="thumbnail-item active-thumb" data-target="0">
+                        <img src="img/bg-img/1.png" alt="Thumb Video">
+                    </div>
+                    <div class="thumbnail-item" data-target="1">
+                        <img src="img/bg-img/k1.jpeg" alt="Thumb 1">
+                    </div>
+                    <div class="thumbnail-item" data-target="2">
+                        <img src="img/bg-img/k2.jpeg" alt="Thumb 2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a> > Outerwear
+                </nav>
+                <h1 class="product-title">Kimono V.1</h1>
+                <p class="price">Rp 499,000</p>
+                
+                <button class="btn-add-cart">ADD TO CART</button>
+
+                <div class="details-accordion">
+                    <details open>
+                        <summary>Designer Notes</summary>
+                        <div class="accordion-content">
+                            <p>Artikel ini menggabungkan teknik tradisional Sashiko dengan material teknis modern. Setiap jahitan dirancang untuk memberikan durabilitas sekaligus estetika industrial yang kuat.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Specifications</summary>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Material: Heavyweight Cotton Blend</li>
+                                <li>Fit: Oversized / Drop Shoulder</li>
+                                <li>Detail: Hand-stitched Sashiko Pattern</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const media = document.querySelectorAll('.gallery-media');
+            const thumbs = document.querySelectorAll('.thumbnail-item');
+
+            thumbs.forEach(t => {
+                t.addEventListener('click', function() {
+                    const idx = this.getAttribute('data-target');
+                    media.forEach(m => {
+                        m.classList.remove('active');
+                        if(m.tagName === 'VIDEO') m.pause();
+                    });
+                    const target = document.querySelector(`.gallery-media[data-index="${idx}"]`);
+                    if(target) {
+                        target.classList.add('active');
+                        if(target.tagName === 'VIDEO') target.play();
+                    }
+                    thumbs.forEach(th => th.classList.remove('active-thumb'));
+                    this.classList.add('active-thumb');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
