@@ -1,4 +1,6 @@
-/* Container Utama */
+/* =========================================
+   1. Container & Slide Utama
+   ========================================= */
 .uniqlo-style-container {
     height: 100vh;
     overflow-y: scroll;
@@ -6,7 +8,6 @@
     scroll-behavior: smooth;
 }
 
-/* Setiap Slide Gambar */
 .uniqlo-slide {
     width: 100%;
     height: 100vh; /* Memastikan satu gambar memenuhi satu layar penuh */
@@ -21,6 +22,18 @@
     object-fit: cover; /* Agar gambar tidak gepeng dan memenuhi layar */
 }
 
+/* Pastikan video memenuhi layar seperti gambar */
+.uniqlo-slide video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    z-index: -1;
+}
+
 /* Penataan Teks agar mirip Uniqlo */
 .uniqlo-text {
     position: absolute;
@@ -29,7 +42,7 @@
     color: #fff;
     border-left: 4px solid #fff;
     padding-left: 20px;
-    background: transparent; /* Sebelumnya: rgba(0, 0, 0, 0.2) */
+    background: transparent; 
 }
 
 .uniqlo-text h2 {
@@ -39,50 +52,132 @@
     text-transform: uppercase;
 }
 
-/* Penyesuaian Menu Desktop di Layar HP */
-@media only screen and (max-width: 767px) {
-    /* Mengatur container header agar muat */
+/* =========================================
+   2. Uniqlo-Style Mega Menu Hover Effects
+   ========================================= */
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        border: 1px solid #eee;
+        border-top: none;
+    }
+    
+    /* Pemicu tampilan menu saat kursor diarahkan (hover) */
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+        animation: fadein 0.2s ease-in;
+    }
+    
+    /* Styling Mega Menu agar melebar memenuhi navigasi */
+    .navbar { 
+        position: relative; 
+    }
+    .navbar .has-megamenu {
+        position: static !important; 
+    }
+    .navbar .megamenu {
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 30px;
+        position: absolute;
+        background-color: #fff;
+        z-index: 1000;
+    }
+}
+
+/* Animasi memudar halus (fade-in) */
+@keyframes fadein {
+    from { 
+        opacity: 0; 
+        transform: translateY(5px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Styling konten teks di dalam Mega Menu */
+.dropdown-header {
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    color: #666;
+    padding: 5px 15px;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    color: #000;
+}
+
+/* =========================================
+   3. Penyesuaian Responsif Layar HP & Tablet (Dibuat Lebih Besar)
+   ========================================= */
+@media only screen and (max-width: 991px) {
+    /* Container header ditarik agak lebar */
     .header-area {
-        padding: 0 10px; /* Kurangi padding kiri-kanan container utama */
+        padding: 0 15px; 
     }
 
-    /* Memaksa menu berjejer ke samping (horizontal) */
+    /* Menu berjajar horizontal dengan jarak merata */
     .navbar-nav {
         flex-direction: row !important;
-        gap: 10px; /* Jarak antar menu */
+        justify-content: center;
+        gap: 15px; /* Jarak antar menu dijauhkan sedikit */
+        width: 100%;
     }
 
-    /* Mengecilkan teks & padding link agar muat bersanding dengan logo */
+    /* Membesarkan tombol teks (WOMEN, MEN, KIDS) agar mudah di-tap */
     .header-area .main-menu .nav-link {
-        padding: 0 5px !important; /* Jarak antar teks dipersempit */
-        font-size: 12px; /* Ukuran font sedikit diperkecil */
+        padding: 10px 10px !important; 
+        font-size: 15px; /* Font diperbesar */
+        font-weight: 600; /* Ditebalkan sedikit */
         text-transform: uppercase;
     }
 
-    /* Opsional: Kecilkan logo jika perlu */
-    .navbar-brand img {
-        max-width: 80px; /* Sesuaikan ukuran logo agar tidak makan tempat */
-    }
-
-/* Menghilangkan kotak hitam menu di HP */
-@media only screen and (max-width: 767px) {
+    /* Menghilangkan kotak hitam */
     #studioMenu {
-        background-color: transparent !important; /* Hapus warna hitam */
-        padding: 0 !important; /* Hapus jarak tambahan yang tidak perlu */
+        background-color: transparent !important; 
+        padding: 0 !important; 
         box-shadow: none !important;
     }
-}
-
-/* Pastikan video memenuhi layar seperti gambar */
-.uniqlo-slide video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Membuat video memenuhi seluruh layar */
-    object-position: center; /* KUNCI UTAMA: Memaksa video selalu berada persis di tengah */
-    z-index: -1;
-}
     
+    /* Membesarkan kotak Dropdown saat terbuka di HP */
+    .navbar .dropdown-menu.megamenu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100vw; /* Kotak dipaksa mengambil lebar penuh layar HP */
+        margin-left: -15px; /* Menggeser ke kiri menutupi margin kosong */
+        padding: 20px 15px; /* Ruang dalam kotak diperbesar */
+        background-color: #fff;
+        border: none;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15); /* Efek bayangan lebih tegas */
+    }
+
+    /* Membesarkan teks kategori di dalam dropdown (Tops, Bottoms, dll) */
+    .dropdown-header {
+        font-size: 16px;
+        margin-top: 15px; /* Jarak antar kategori dijauhkan */
+        padding-left: 10px;
+    }
+
+    /* Membesarkan pilihan item agar jari tidak salah klik */
+    .dropdown-item {
+        font-size: 15px;
+        padding: 12px 10px; /* Area sentuh atas-bawah diperlebar */
+    }
 }
